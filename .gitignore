@@ -1,0 +1,5 @@
+!.gitignore
+
+gtk-learing
+*.o
+*.d
