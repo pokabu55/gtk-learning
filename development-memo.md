@@ -111,3 +111,4 @@
   * それと、main関数のインクルードヘッダも `gtkmm` に修正した。
 * Makefileに関しては、最初は `LDFLAGS` だけに gtk を追加したんだが、Chat-GPT の言う通り、`CFLAGS` にも追記が必要だった。このあたりは自分の理解が出来てないためだった
 * ただし、ビルドが通っても、main.cpp でインクルードしてる `gtkmm.h` は、警告が残っています。
+* [Makefileの書き方メモ](https://qiita.com/nullpo24/items/716bad137f1264b776f5) を参考までに読んでおいてね。
