@@ -32,19 +32,29 @@ int main (int argc, char* argv[])
 class SampleWindow : public Gtk::Window
 {
 public:
-    SampleWindow(int width, int height);
+    SampleWindow(int width, int height, std::string labelName);
     virtual ~SampleWindow() = default;
+
+private:
+    Gtk::Label label_;
 };
 
-SampleWindow::SampleWindow(int width, int height)
+SampleWindow::SampleWindow(int width, int height, std::string labelName)
 {
     set_title("タイトル");
     set_default_size(width, height);
+
+    // テキストの表示
+    label_.set_text(labelName);
+    label_.show();
+
+    //
+    add(label_);
 }
 
 int main(int argc, char* argv[])
 {
     auto app = Gtk::Application::create(argc, argv, "work.jitaku.gtkmm.sample");
-    SampleWindow sample_window(320, 240);
+    SampleWindow sample_window(640, 480, "test,test");
     return app->run(sample_window);
 }
