@@ -58,3 +58,27 @@ int main(int argc, char* argv[])
     SampleWindow sample_window(640, 480, "test,test");
     return app->run(sample_window);
 }
+
+bool trimingScaling(
+    unsigned char *src, int srcW, int srcH,
+    int trimSx, int trimSy, int trimW, int trimH, double scale, 
+    unsigned char *dst, int dstW, int dstH
+) {
+
+    int x,y;
+    int dx, dy;
+
+    for (dy=0; dy < dstH; dy++) {
+        for (dx=0; dx<dstW; dx++) {
+            // 逆変換で入力画像の座標
+            x = (int)((dx / scale) + trimSx + 0.5);
+            y = (int)((dy / scale) + trimSy + 0.5);
+
+            if(x<0 || x >= srcW || y<0 || y>= srcH) continue;
+
+            dst[dx+dy*dstW] = src[x+y*srcW];
+        }
+    }
+
+    return true;
+}
